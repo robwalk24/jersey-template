@@ -1,0 +1,88 @@
+group 'io.rowtech.api'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+apply plugin: 'war'
+
+sourceCompatibility = 1.8
+
+ext.jerseyVersion = '2.26'
+ext.hk2Version = '2.4.0'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.11'
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+
+    // jersey
+    compile group: 'org.glassfish.jersey.core', name: 'jersey-client', version: "$jerseyVersion"
+    compile group: 'org.glassfish.jersey.core', name: 'jersey-server', version: "$jerseyVersion"
+    compile group: 'org.glassfish.jersey.core', name: 'jersey-common', version: "$jerseyVersion"
+    compile group: 'org.glassfish.jersey.containers', name: 'jersey-container-servlet', version: "$jerseyVersion"
+    compile group: 'org.glassfish.jersey.containers', name: 'jersey-container-servlet-core', version: "$jerseyVersion"
+    compile group: 'org.glassfish.jersey.media', name: 'jersey-media-jaxb', version: "$jerseyVersion"
+    compile group: 'org.glassfish.jersey.bundles.repackaged', name: 'jersey-guava', version: '2.25.1'
+    compile group: 'javax.persistence', name: 'persistence-api', version: '1.0'
+    compile group: 'org.glassfish.hk2', name: 'osgi-resource-locator', version: '1.0.1'
+    compile group: 'org.osgi', name: 'org.osgi.core', version: '4.2.0'
+    compile group: 'javax.validation', name: 'validation-api', version: '1.1.0.Final'
+    compile group: 'javax.servlet', name: 'javax.servlet-api', version: '3.0.1'
+    compile group: 'org.glassfish.hk2', name: 'hk2-locator', version: "$hk2Version"
+    compile group: 'org.glassfish.hk2', name: 'hk2-api', version: "$hk2Version"
+    compile group: 'org.glassfish.hk2', name: 'hk2-utils', version: "$hk2Version"
+    compile group: 'org.glassfish.hk2.external', name: 'aopalliance-repackaged', version: "$hk2Version"
+    compile group: 'org.ow2.asm', name: 'asm-debug-all', version: '5.0.4'
+    compile group: 'org.javassist', name: 'javassist', version: '3.20.0-GA'
+    compile group: 'org.glassfish.hk2.external', name: 'javax.inject', version: "$hk2Version"
+    compile group: 'javax.xml.bind', name: 'jaxb-api', version: '2.2.7'
+    compile group: 'javax.annotation', name: 'javax.annotation-api', version: '1.2'
+    compile group: 'javax.ws.rs', name: 'javax.ws.rs-api', version: '2.0.1'
+    compile group: 'org.glassfish.jersey.inject', name: 'jersey-hk2', version: "$jerseyVersion"
+    compile group: 'org.glassfish.jersey.ext', name: 'jersey-bean-validation', version: "$jerseyVersion"
+    compile group: 'org.glassfish.jersey.media', name: 'jersey-media-json-processing', version: "$jerseyVersion"
+    compile group: 'org.glassfish.jersey.media', name: 'jersey-media-multipart', version: "$jerseyVersion"
+    compile group: 'org.glassfish.jersey.media', name: 'jersey-media-json-jackson', version: "$jerseyVersion"
+    compile group: 'org.glassfish', name: 'javax.json', version: '1.0.4'
+
+
+    // database
+    compile group: 'commons-dbutils', name: 'commons-dbutils', version: '1.7'
+    compile group: 'org.postgresql', name: 'postgresql', version: '42.2.2'
+    compile group: 'org.xerial', name: 'sqlite-jdbc', version: '3.21.0.1'
+
+
+    // modelmapper
+    compile group: 'org.modelmapper', name: 'modelmapper', version: '1.1.3'
+    compile group: 'org.modelmapper.extensions', name: 'modelmapper-guice', version: '1.1.3'
+
+    // guice
+    compile group: 'com.google.inject', name: 'guice', version: '4.2.0'
+    compile group: 'org.glassfish.hk2', name: 'guice-bridge', version: "$hk2Version"
+    compile group: 'com.google.inject.extensions', name: 'guice-servlet', version: '4.2.0'
+    compile group: 'com.google.guava', name: 'guava', version: '25.0-jre'
+    compile group: 'com.google.inject.extensions', name: 'guice-throwingproviders', version: '4.2.0'
+
+
+    // jackson
+    compile group: 'com.fasterxml.jackson.datatype', name: 'jackson-datatype-joda', version: '2.9.5'
+
+
+    compile group: 'org.modelmapper', name: 'modelmapper', version: '1.1.3'
+    compile group: 'org.modelmapper.extensions', name: 'modelmapper-guice', version: '1.1.3'
+
+    // oauth
+    compile group: 'com.github.scribejava', name: 'scribejava-apis', version: '5.4.0'
+
+    // bean validation
+    compile group: 'javax.validation', name: 'validation-api', version: '2.0.1.Final'
+    compile group: 'org.hibernate.validator', name: 'hibernate-validator', version: '6.0.9.Final'
+    compile group: 'javax.el', name: 'javax.el-api', version: '2.2.5'
+    compile group: 'ru.vyarus', name: 'guice-validator', version: '1.2.0'
+
+    compile group: 'org.akhikhl.gretty', name: 'gretty', version: '2.0.0'
+
+
+}
