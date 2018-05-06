@@ -20,7 +20,7 @@ import java.util.Optional;
 public class HeroesResource {
     private final HeroesService heroesService;
     private final Mapper mapper;
-    private final org.slf4j.Logger logger = LoggerFactory.getLogger(HeroesResource.class);
+
     @Context
     private UriInfo uriInfo;
 
@@ -31,7 +31,6 @@ public class HeroesResource {
     }
     @GET
     public Response getAll(){
-        logger.debug("this is a debug message");
         List<HeroModel> models = mapper.map(heroesService.getAll(), new TypeToken<List<Hero>>() {}.getType());
         return Response.ok(models).build();
     }
