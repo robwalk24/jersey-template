@@ -24,10 +24,10 @@ public class RestConfig extends ResourceConfig {
 
         property(ServerProperties.WADL_FEATURE_DISABLE, true);
 
-        property(ServerProperties.MONITORING_ENABLED, Boolean.TRUE);
+/*        property(ServerProperties.MONITORING_ENABLED, Boolean.TRUE);
         property(ServerProperties.BV_SEND_ERROR_IN_RESPONSE, Boolean.TRUE);
         property(LoggingFeature.LOGGING_FEATURE_LOGGER_LEVEL_SERVER, "INFO");
-        property(LoggingFeature.LOGGING_FEATURE_VERBOSITY_SERVER, LoggingFeature.Verbosity.PAYLOAD_ANY);
+        property(LoggingFeature.LOGGING_FEATURE_VERBOSITY_SERVER, LoggingFeature.Verbosity.PAYLOAD_ANY);*/
 
         register(JsonProvider.class);
         register(JacksonFeature.class);

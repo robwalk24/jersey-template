@@ -1,0 +1,100 @@
+{
+	"variables": [],
+	"info": {
+		"name": "io.rowtech.api",
+		"_postman_id": "cfdd8999-4a38-491b-ca93-23cb33287667",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get all heroes",
+			"request": {
+				"url": "http://localhost:8080/api/heroes",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Get hero by id",
+			"request": {
+				"url": "http://localhost:8080/api/heroes/1",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Create hero",
+			"request": {
+				"url": "http://localhost:8080/api/heroes",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "X-Requested-By",
+						"value": "12345",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"Wonder Woman\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Update hero",
+			"request": {
+				"url": "http://localhost:8080/api/heroes/4",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "X-Requested-By",
+						"value": "12345",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"Hulk - updated\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Delete hero",
+			"request": {
+				"url": "http://localhost:8080/api/heroes/3",
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "X-Requested-By",
+						"value": "12345",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
