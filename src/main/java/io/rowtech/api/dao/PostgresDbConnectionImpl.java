@@ -1,11 +1,14 @@
 package io.rowtech.api.dao;
 
+import org.slf4j.LoggerFactory;
+
 import javax.inject.Inject;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class PostgresDbConnectionImpl implements DbConnection {
+    private final org.slf4j.Logger logger = LoggerFactory.getLogger(PostgresDbConnectionImpl.class);
     private Connection connection;
 
     @Inject
@@ -21,7 +24,9 @@ public class PostgresDbConnectionImpl implements DbConnection {
                                 "hero", "password");
             }
         } catch (ClassNotFoundException | SQLException e) {
-            e.printStackTrace();
+            String message = String.format("Failed to get database connection. %s", e.getMessage());
+            logger.error(message, e);
+            throw new RuntimeException(message, e);
         }
 
         return connection;

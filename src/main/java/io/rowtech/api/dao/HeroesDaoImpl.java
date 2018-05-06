@@ -4,6 +4,7 @@ import io.rowtech.api.domain.Hero;
 import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.dbutils.handlers.BeanHandler;
 import org.apache.commons.dbutils.handlers.BeanListHandler;
+import org.slf4j.LoggerFactory;
 
 import javax.inject.Inject;
 import java.sql.Connection;
@@ -13,6 +14,7 @@ import java.util.List;
 import java.util.Optional;
 
 public class HeroesDaoImpl implements CrudDao<Hero> {
+    private final org.slf4j.Logger logger = LoggerFactory.getLogger(HeroesDaoImpl.class);
     private final DbConnection dbConnection;
 
     @Inject
@@ -33,9 +35,9 @@ public class HeroesDaoImpl implements CrudDao<Hero> {
             QueryRunner runner = new QueryRunner();
             return Optional.ofNullable(runner.query(connection, Sql.GET, beanHandler, id));
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.error(e.getMessage(), e);
+            throw new RuntimeException(e.getMessage(), e);
         }
-        return Optional.empty();
     }
 
     @Override
@@ -46,9 +48,9 @@ public class HeroesDaoImpl implements CrudDao<Hero> {
             Connection connection = dbConnection.get();
             return runner.query(connection, Sql.GET_ALL, beanListHandler);
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.error(e.getMessage(), e);
+            throw new RuntimeException(e.getMessage(), e);
         }
-        return new ArrayList<>();
     }
 
     @Override
@@ -59,9 +61,9 @@ public class HeroesDaoImpl implements CrudDao<Hero> {
             Connection connection = dbConnection.get();
             return runner.insert(connection, Sql.CREATE, beanHandler, entity.getName());
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.error(e.getMessage(), e);
+            throw new RuntimeException(e.getMessage(), e);
         }
-        return null;
     }
 
     @Override
@@ -72,9 +74,9 @@ public class HeroesDaoImpl implements CrudDao<Hero> {
             return runner.update(connection, Sql.UPDATE,
                     entity.getName(), entity.getId()) > 0;
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.error(e.getMessage(), e);
+            throw new RuntimeException(e.getMessage(), e);
         }
-        return false;
     }
 
     @Override
@@ -84,7 +86,8 @@ public class HeroesDaoImpl implements CrudDao<Hero> {
             Connection connection = dbConnection.get();
             runner.execute(connection, Sql.DELETE, id);
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.error(e.getMessage(), e);
+            throw new RuntimeException(e.getMessage(), e);
         }
     }
 

@@ -6,6 +6,7 @@ import io.rowtech.api.bootstrap.ContainerLocator;
 import io.rowtech.api.resource.HeroesResource;
 import org.glassfish.hk2.api.ServiceLocator;
 import org.glassfish.jersey.jackson.JacksonFeature;
+import org.glassfish.jersey.logging.LoggingFeature;
 import org.glassfish.jersey.server.ResourceConfig;
 import org.glassfish.jersey.server.ServerProperties;
 import org.glassfish.jersey.server.filter.CsrfProtectionFilter;
@@ -23,10 +24,16 @@ public class RestConfig extends ResourceConfig {
 
         property(ServerProperties.WADL_FEATURE_DISABLE, true);
 
+        property(ServerProperties.MONITORING_ENABLED, Boolean.TRUE);
+        property(ServerProperties.BV_SEND_ERROR_IN_RESPONSE, Boolean.TRUE);
+        property(LoggingFeature.LOGGING_FEATURE_LOGGER_LEVEL_SERVER, "INFO");
+        property(LoggingFeature.LOGGING_FEATURE_VERBOSITY_SERVER, LoggingFeature.Verbosity.PAYLOAD_ANY);
+
         register(JsonProvider.class);
         register(JacksonFeature.class);
         register(CsrfProtectionFilter.class);
         register(CorsFilter.class);
+        register(LoggingFeature.class);
 
         packages(HeroesResource.class.getPackage().getName());
         packages(ThrowableExceptionMapper.class.getPackage().getName());
